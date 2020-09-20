@@ -8,30 +8,37 @@ def main():
     
     def check(num, guess):
         if num < guess:
-            return print('Too high!')
+            return 'Too high!'
         else:
-            return print('Too low!')
-        
+            return 'Too low!'
+   
+    def tries(ctn):
+        if ctn > 1:
+            return 'tries'
+        else:
+            return 'try'
     
     exit = 1
     count = 1
     
-    print(f'MVP: The number is: {num}')
+    print(f'***MVP: The number is: {num}***') # delete or comment out before publishing!
     
     while exit:
         guess = int(input(f'Your guess number {count}: '))
+        
         if guess != num and count != 3:
+            print(f'Nope! {check(num, guess)} You have {3-count} {tries(3-count)} left!')
+            count += 1
             exit = 1
-            print(f'Nope! {check(num, guess)} You have {3-count} tries left!')
         elif guess == num and count < 4:
             print('Congratulations! You Won!')
             exit = 0
         else:
-            print(f'Nope! {check(num, guess)} Thanks for playing!')
+            print(f'{check(num, guess)}')
+            print(f'Nope! Thanks for playing!')
             exit = 0
-        count += 1
         
-    return '' 
+
     
 if __name__ == "__main__":
     main()
